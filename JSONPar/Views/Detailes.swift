@@ -11,20 +11,20 @@ import SwiftUI
 
 struct Detailes: View {
     
-    var someDet: ModeliN
+    var someDet: ItemOfNews
     // Подключаем нашу модель
     var body: some View {
         VStack(alignment:.leading, spacing:10){
-            Text(someDet.name).font(.system(size: 28, weight: .bold, design: .rounded))
-            Text(someDet.state).font(.subheadline).foregroundColor(Color.accentColor)
-            Text(someDet.description).lineLimit(4)
+            Text(someDet.headline).font(.system(size: 28, weight: .bold, design: .rounded))
+            Text(someDet.category).font(.subheadline).foregroundColor(Color.accentColor)
+            Text(someDet.summary).lineLimit(4)
             Spacer()
         }
     }
 }
 
-struct Detailes_Previews: PreviewProvider {
-    static var previews: some View {
-        Detailes(someDet: landmarks[1])
-    }
-}
+//struct Detailes_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Detailes(someDet: landmarks[1])
+//    }
+//}

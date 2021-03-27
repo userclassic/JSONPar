@@ -11,34 +11,34 @@ import SwiftUI
 
 struct Rowes: View {
     
-    var someRow: ModeliN
+    var someRow: ItemOfNews
     // подключаем нашу модель
     
     var body: some View {
         VStack(alignment:.leading){
             HStack{
-                Text(someRow.name).font(.system (.title2, design: .rounded))
+                Text(someRow.headline).font(.system (.title2, design: .rounded))
                 Spacer()
-                if someRow.isFavorite {
-                                Image(systemName: "heart.fill")
-                                    .foregroundColor(.pink)
-                } else {
-                    Image(systemName: "heart")
-                        .foregroundColor(.gray)
-                }
+//                if someRow.isFavorite {
+//                                Image(systemName: "heart.fill")
+//                                    .foregroundColor(.pink)
+//                } else {
+//                    Image(systemName: "heart")
+//                        .foregroundColor(.gray)
+//                }
             }
-            HStack{
-                Text(someRow.city).foregroundColor(Color.gray)
-                Spacer()
-                Text(someRow.state).foregroundColor(Color.pink)
-                //Spacer()
-            }
+//            HStack{
+//                Text(someRow.).foregroundColor(Color.gray)
+//                Spacer()
+//                Text(someRow.datetime).foregroundColor(Color.pink)
+//                //Spacer()
+//            }
         }
     }
 }
 
-struct Row_Previews: PreviewProvider {
-    static var previews: some View {
-        Rowes(someRow: landmarks[1])
-    }
-}
+//struct Row_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Rowes(someRow: landmarks[1])
+//    }
+//}

@@ -6,7 +6,7 @@
 //
 import Foundation
 import SwiftUI
-
+import UIKit
 
 // лист  наших строк из Rowes
 /*
@@ -30,9 +30,10 @@ struct Listok: View {
     @State private var showFavoritesOnly = true
 //    @State private var buttonColor:Color = .gray
     @State private var colorok = Color(.darkGray)
+    private let colorNotOk: Color = .pink
     
     
-    
+    let service: NewsCatcher = FinHubService.shared
     
     
     var filteredLandmarks: [ModeliN] {
@@ -40,6 +41,9 @@ struct Listok: View {
             (!showFavoritesOnly || landmark.isFavorite)
         }
     }
+    
+    @State var news: News = []
+    
 //    var colorok = Color(.darkGray)
     // не могу понять как менять цвет кнопок по отслеживанию состояния
     
@@ -53,10 +57,17 @@ struct Listok: View {
     var body: some View {
 //        var somees = sostoyanya[selectet]
 //        examplesso(bolne: showFavoritesOnly) //функция не работает только enum
+        
+        let _ = service.getNewsIn(category: .general) {(news) in
+            self.news = news
+        }
+        
         VStack(alignment:.leading){
             
     
             HStack(alignment:.bottom){
+                
+                let colorOfButton = showFavoritesOnly ? colorNotOk : colorok
                 
                 Button (action: {
                     showFavoritesOnly = false
@@ -69,7 +80,7 @@ struct Listok: View {
                     //self.showFavoritesOnly.toggle()
                 }){
                     Text("Favourite").font(.largeTitle).bold()
-                }.buttonStyle(BananaButtonStyle(color: colorok))
+                }.buttonStyle(BananaButtonStyle(color: colorOfButton))
                 
 //                $showFavoritesOnly == true {
 //                    colorok = Color(.red)
@@ -84,19 +95,17 @@ struct Listok: View {
             }.pickerStyle(SegmentedPickerStyle())
             Text("Selected \(fruits[selectet])")
             
-            
-            
             NavigationView{
                 
                 List {
-                    StockItem()
+                    
                     
                     //                Toggle(isOn: $showFavoritesOnly) {
                     //                    Text("Favorites only")
                     //                }
                     
                     
-                    ForEach(filteredLandmarks) { lucky  in
+                    ForEach(news) { lucky  in
                         NavigationLink(destination: Detailes (someDet: lucky)){
                             Rowes(someRow: lucky)
                         }
