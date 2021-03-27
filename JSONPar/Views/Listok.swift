@@ -25,7 +25,7 @@ var showFavoritesOnly = true
 struct Listok: View {
     @State private var selectet = 0
     @State private var sostoyanya = [true,false]
-    var fruits = ["Stocks","Favorite"]
+    var fruits = ["Stoc ks","Favorite"]
     @State private var sommes = true
     @State private var showFavoritesOnly = true
 //    @State private var buttonColor:Color = .gray
