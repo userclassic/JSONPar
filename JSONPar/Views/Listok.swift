@@ -6,7 +6,7 @@
 //
 import Foundation
 import SwiftUI
-import UIKit
+
 
 // лист  наших строк из Rowes
 /*
@@ -84,10 +84,12 @@ struct Listok: View {
             }.pickerStyle(SegmentedPickerStyle())
             Text("Selected \(fruits[selectet])")
             
+            
+            
             NavigationView{
                 
                 List {
-                    
+                    StockItem()
                     
                     //                Toggle(isOn: $showFavoritesOnly) {
                     //                    Text("Favorites only")
